@@ -1,10 +1,4 @@
 <script>
-import facebookIcon from '../assets/img/footer-facebook.png'
-import twitterIcon from '../assets/img/footer-twitter.png'
-import youtubeIcon from '../assets/img/footer-youtube.png'
-import pinterestIcon from '../assets/img/footer-pinterest.png'
-import findusIcon from '../assets/img/footer-periscope.png'
-
     export default {
         name :'AppSocial',
         data() {
@@ -12,30 +6,35 @@ import findusIcon from '../assets/img/footer-periscope.png'
                 socials:[
                     {
                         name: "facebook",
-                        icon: facebookIcon,
+                        icon: "footer-facebook.png",
                         url: "#",
                     },
                     {
                         name: "twitter",
-                        icon: twitterIcon,
+                        icon: "footer-twitter.png",
                         url: "#",
                     },
                     {
                         name: "youtube",
-                        icon: youtubeIcon,
+                        icon: "footer-youtube.png",
                         url: "#",
                     },
                     {
                         name: "pinterest",
-                        icon: pinterestIcon,
+                        icon: "footer-pinterest.png",
                         url: "#",
                     },
                     {
                         name: "find-us",
-                        icon: findusIcon,
+                        icon: "footer-periscope.png",
                         url: "#",
                     },                  
                 ],
+            }
+        },
+        methods: {
+            getImagePath: function(img) {
+                return new URL(`../assets/img/${img}` , import.meta.url).href;
             }
         }
     }
@@ -52,7 +51,11 @@ import findusIcon from '../assets/img/footer-periscope.png'
                     <a href="#">FOLLOW US</a>
                 </div>
                 <div class="icons-container" >
-                    <div :class="social.name" v-for="(social,index) in socials" :key="index"><a :href="social.url"><img :src="social.icon" alt=""></a></div>
+                    <div :class="social.name" v-for="(social,index) in socials" :key="index">
+                        <a :href="social.url">
+                            <img :src="getImagePath(social.icon)" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

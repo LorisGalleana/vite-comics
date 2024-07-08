@@ -1,40 +1,37 @@
 <script>
-import buyComicsDigitalComics from '../assets/img/buy-comics-digital-comics.png';
-import buyComicsMerchandise from '../assets/img/buy-comics-merchandise.png';
-import buyComicsShopLocator from '../assets/img/buy-comics-shop-locator.png';
-import buyComicsSubscriptions from '../assets/img/buy-comics-subscriptions.png';
-import buyDcPowerVisa from '../assets/img/buy-dc-power-visa.svg';
-
-
-
-
     export default {
         name :'AppPurchase',
         data() {
             return {
                 images:[
                     {
-                        image: buyComicsDigitalComics,
+                        image: "buy-comics-digital-comics.png",
                         text: "DIGITAL COMICS"
                     },
                     {
-                        image: buyComicsMerchandise,
+                        image: 'buy-comics-merchandise.png',
                         text: "DC MERCHANDISE"
                     },
                     {
-                        image: buyComicsSubscriptions,
+                        image: "buy-comics-shop-locator.png",
                         text: "SUBSCRIPTION"
                     },
                     {
-                        image: buyComicsShopLocator,
+                        image: "buy-comics-subscriptions.png",
                         text: "COMIC SHOP LOCATOR"
                     },
                     {
-                        image: buyDcPowerVisa,
+                        image: "buy-dc-power-visa.svg",
                         text: "DC POWER VISA"
                     },
                     
-                ],
+                ]
+            };
+
+        },
+        methods: {
+            getImagePath: function(img) {
+                return new URL(`../assets/img/${img}` , import.meta.url).href;
             }
         }
     }
@@ -44,7 +41,7 @@ import buyDcPowerVisa from '../assets/img/buy-dc-power-visa.svg';
     <div class="component-container">
         <div class="container" >
             <div class="purchase" v-for="(purchase,index) in images" :key="index">
-                <a href="#"><div class="icon"><img :src="purchase.image" alt=""></div> <div class="text">{{ purchase.text }}</div></a>
+                <a href="#"><div class="icon"><img :src="getImagePath(purchase.image)" alt=""></div> <div class="text">{{ purchase.text }}</div></a>
             </div>
         </div>
     </div>

@@ -1,6 +1,11 @@
 <script>
+import Jumbotron from './Jumbotron.vue'
+
     export default {
         name :'AppNav',
+        components: {
+            Jumbotron,
+        },
         data() {
             return {
                 links:[
@@ -71,19 +76,20 @@
 <template>
     <div class="component-container">
         <div class="container">
-        <div class="dc-logo">
-            <a href="#">
-                <img src="/src/assets/img/dc-logo.png" alt="">
-            </a>
-        </div>
-        <nav class="dc-nav">
-            <ul >
-                <li v-for="(link,index) in links" :key="index" @click="toggleNav(index)">
-                    <a href="#" class="bordo" :class="currentIndex === index ? 'active' : '' ">{{ link.text }}</a>
-                </li>
-            </ul>
-        </nav>
+            <div class="dc-logo">
+                <a href="#">
+                    <img src="/src/assets/img/dc-logo.png" alt="">
+                </a>
+            </div>
+            <nav class="dc-nav">
+                <ul >
+                    <li v-for="(link,index) in links" :key="index" @click="toggleNav(index)">
+                        <a :href="link.url" class="bordo" :class="currentIndex === index ? 'active' : '' ">{{ link.text }}</a>
+                    </li>
+                </ul>
+            </nav>
     </div>
+    <Jumbotron />
     </div>
 </template>
 

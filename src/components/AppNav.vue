@@ -17,7 +17,7 @@
                     {
                         text: "MOVIES",
                         url: "#",
-                        status: true,
+                        status: false,
                     },
                     {
                         text: "TV",
@@ -56,7 +56,14 @@
                     },
                     
                 ],
+                currentIndex: 0,
             }
+            
+        },
+        methods: {
+            toggleNav(index) {
+            this.currentIndex = index;
+        }
         }
     }
 </script>
@@ -71,10 +78,9 @@
         </div>
         <nav class="dc-nav">
             <ul >
-                <li v-for="(link,index) in links" :key="index">
-                    <a href="#" class="bordo" :class="link.status ? 'active' : '' ">{{ link.text }}</a>
+                <li v-for="(link,index) in links" :key="index" @click="toggleNav(index)">
+                    <a href="#" class="bordo" :class="currentIndex === index ? 'active' : '' ">{{ link.text }}</a>
                 </li>
-                
             </ul>
         </nav>
     </div>
@@ -89,7 +95,7 @@
 .container {
     @include center(horizontal);
     justify-content: space-between;
-    height: 30vh;
+    height: $navandborderheight; //variabile scritta in _variable.scss
     
 }
 .dc-logo {
@@ -99,13 +105,13 @@ ul {
     list-style: none;
     display: flex;
     gap: 2%;
-    font-size: 14px;
+    font-size: 12px;
     margin-right: 2%;
 }
 li a {
     text-decoration: none;
     font-weight: bold;
-    height: 30vh;
+    height: $navandborderheight; //variabile scritta in _variable.scss
     @include center;
 
     &.bordo {

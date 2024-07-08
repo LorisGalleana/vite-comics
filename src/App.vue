@@ -1,12 +1,18 @@
 <script >
 import AppNav from './components/AppNav.vue'
 import AppContent from './components/AppContent.vue'
+import AppPurchase from './components/AppPurchase.vue'
+import AppFooter from './components/AppFooter.vue'
+import AppSocial from './components/AppSocial.vue'
 
 export default {
   name: 'App',
   components: {
     AppNav,
-    AppContent
+    AppContent,
+    AppPurchase,
+    AppFooter,
+    AppSocial
   }
 }
 </script>
@@ -15,6 +21,10 @@ export default {
   
   <AppNav />
   <AppContent />
+  <AppPurchase />
+  <AppFooter />
+  <AppSocial />
+
 </template>
 
 <style lang="scss">
